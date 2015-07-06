@@ -165,3 +165,12 @@ class HipChat(jenkins_jobs.modules.base.Base):
         # The room specified here is the default room.  The default is
         # redundant in this case since a room must be specified.  Leave empty.
         XML.SubElement(hippub, 'room').text = room.text
+
+        if hipchat.get('start-job-message'):
+            XML.SubElement(hippub, 'startJobMessage').text = str(
+                hipchat.get('start-job-message', False)
+            )
+        if hipchat.get('complete-job-message'):
+            XML.SubElement(hippub, 'completeJobMessage').text = str(
+                hipchat.get('complete-job-message', False)
+            )
